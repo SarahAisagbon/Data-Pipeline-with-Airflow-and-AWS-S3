@@ -1,0 +1,44 @@
+[2023-12-20 18:24:06,716] {taskinstance.py:1043} INFO - Dependencies all met for <TaskInstance: s3_to_postgres_dag.push_to_postgres manual__2023-12-20T18:24:01.685868+00:00 [queued]>
+[2023-12-20 18:24:06,726] {taskinstance.py:1043} INFO - Dependencies all met for <TaskInstance: s3_to_postgres_dag.push_to_postgres manual__2023-12-20T18:24:01.685868+00:00 [queued]>
+[2023-12-20 18:24:06,727] {taskinstance.py:1249} INFO - 
+--------------------------------------------------------------------------------
+[2023-12-20 18:24:06,728] {taskinstance.py:1250} INFO - Starting attempt 1 of 1
+[2023-12-20 18:24:06,729] {taskinstance.py:1251} INFO - 
+--------------------------------------------------------------------------------
+[2023-12-20 18:24:06,744] {taskinstance.py:1270} INFO - Executing <Task(PythonOperator): push_to_postgres> on 2023-12-20 18:24:01.685868+00:00
+[2023-12-20 18:24:06,748] {standard_task_runner.py:52} INFO - Started process 3809 to run task
+[2023-12-20 18:24:06,751] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 's3_to_postgres_dag', 'push_to_postgres', 'manual__2023-12-20T18:24:01.685868+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmp39hno07b', '--error-file', '/tmp/tmpvr98hbua']
+[2023-12-20 18:24:06,752] {standard_task_runner.py:80} INFO - Job 8: Subtask push_to_postgres
+[2023-12-20 18:24:06,801] {logging_mixin.py:109} INFO - Running <TaskInstance: s3_to_postgres_dag.push_to_postgres manual__2023-12-20T18:24:01.685868+00:00 [running]> on host eddfb0464777
+[2023-12-20 18:24:06,840] {taskinstance.py:1448} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=s3_to_postgres_dag
+AIRFLOW_CTX_TASK_ID=push_to_postgres
+AIRFLOW_CTX_EXECUTION_DATE=2023-12-20T18:24:01.685868+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-12-20T18:24:01.685868+00:00
+[2023-12-20 18:24:07,294] {logging_mixin.py:109} INFO - Index(['STORE_ID', 'STORE_LOCATION', 'PRODUCT_CATEGORY', 'PRODUCT_ID', 'MRP',
+       'CP', 'DISCOUNT', 'SP', 'Date'],
+      dtype='object')
+[2023-12-20 18:24:07,295] {taskinstance.py:1774} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 174, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 188, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/first_dag.py", line 53, in push_to_postgres
+    port=5432
+  File "/home/airflow/.local/lib/python3.6/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5432 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2023-12-20 18:24:07,334] {taskinstance.py:1288} INFO - Marking task as FAILED. dag_id=s3_to_postgres_dag, task_id=push_to_postgres, execution_date=20231220T182401, start_date=20231220T182406, end_date=20231220T182407
+[2023-12-20 18:24:07,362] {standard_task_runner.py:98} ERROR - Failed to execute job 8 for task push_to_postgres (connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5432 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+; 3809)
+[2023-12-20 18:24:07,406] {local_task_job.py:154} INFO - Task exited with return code 1
+[2023-12-20 18:24:07,444] {local_task_job.py:264} INFO - 0 downstream tasks scheduled from follow-on schedule check

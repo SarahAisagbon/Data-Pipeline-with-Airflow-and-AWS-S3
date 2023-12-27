@@ -1,0 +1,34 @@
+[2023-12-20 20:31:02,019] {taskinstance.py:1043} INFO - Dependencies all met for <TaskInstance: s3_to_postgres_dag.push_to_postgres manual__2023-12-20T20:30:57.899323+00:00 [queued]>
+[2023-12-20 20:31:02,030] {taskinstance.py:1043} INFO - Dependencies all met for <TaskInstance: s3_to_postgres_dag.push_to_postgres manual__2023-12-20T20:30:57.899323+00:00 [queued]>
+[2023-12-20 20:31:02,031] {taskinstance.py:1249} INFO - 
+--------------------------------------------------------------------------------
+[2023-12-20 20:31:02,031] {taskinstance.py:1250} INFO - Starting attempt 1 of 1
+[2023-12-20 20:31:02,032] {taskinstance.py:1251} INFO - 
+--------------------------------------------------------------------------------
+[2023-12-20 20:31:02,045] {taskinstance.py:1270} INFO - Executing <Task(PythonOperator): push_to_postgres> on 2023-12-20 20:30:57.899323+00:00
+[2023-12-20 20:31:02,051] {standard_task_runner.py:52} INFO - Started process 8552 to run task
+[2023-12-20 20:31:02,054] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 's3_to_postgres_dag', 'push_to_postgres', 'manual__2023-12-20T20:30:57.899323+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpitkdv9ep', '--error-file', '/tmp/tmp95c1bhl4']
+[2023-12-20 20:31:02,056] {standard_task_runner.py:80} INFO - Job 24: Subtask push_to_postgres
+[2023-12-20 20:31:02,106] {logging_mixin.py:109} INFO - Running <TaskInstance: s3_to_postgres_dag.push_to_postgres manual__2023-12-20T20:30:57.899323+00:00 [running]> on host eddfb0464777
+[2023-12-20 20:31:02,149] {taskinstance.py:1448} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=s3_to_postgres_dag
+AIRFLOW_CTX_TASK_ID=push_to_postgres
+AIRFLOW_CTX_EXECUTION_DATE=2023-12-20T20:30:57.899323+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-12-20T20:30:57.899323+00:00
+[2023-12-20 20:31:02,581] {logging_mixin.py:109} INFO - Index(['STORE_ID', 'STORE_LOCATION', 'PRODUCT_CATEGORY', 'PRODUCT_ID', 'MRP',
+       'CP', 'DISCOUNT', 'SP', 'Date'],
+      dtype='object')
+[2023-12-20 20:31:02,581] {taskinstance.py:1774} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 174, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 188, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/first_dag.py", line 50, in push_to_postgres
+    dbname=transactionsdb,
+NameError: name 'transactionsdb' is not defined
+[2023-12-20 20:31:02,594] {taskinstance.py:1288} INFO - Marking task as FAILED. dag_id=s3_to_postgres_dag, task_id=push_to_postgres, execution_date=20231220T203057, start_date=20231220T203102, end_date=20231220T203102
+[2023-12-20 20:31:02,607] {standard_task_runner.py:98} ERROR - Failed to execute job 24 for task push_to_postgres (name 'transactionsdb' is not defined; 8552)
+[2023-12-20 20:31:02,628] {local_task_job.py:154} INFO - Task exited with return code 1
+[2023-12-20 20:31:02,655] {local_task_job.py:264} INFO - 0 downstream tasks scheduled from follow-on schedule check
